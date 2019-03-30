@@ -16,7 +16,7 @@ def generate_mask():
 
 	return "".join(name) + "." + "".join(ext)
 
-def get_valid_txt_by_mask(mask, ALPH):
+def get_valid_txt_by_mask(mask, ALPH=ALPH):
 	mask = list(mask)
 	for i, s in enumerate(mask):
 		if s == "?":
@@ -33,12 +33,16 @@ def get_invalid_txt_by_mask(file_mask):
 	sp_indxs = []
 	for i, s in enumerate(file_mask):
 		if s in SALPH:
-			if i != len(file_mask) - 1 and file_mask[i+1] not in SALPH and file_mask[i+1] != ".":
-				sp_indxs.append([i, 1])
-			elif i > 0 and file_mask[i-1] not in SALPH and file_mask[i-1] != ".":
-				sp_indxs.append([i, -1])
+			if s == "*"
+				if  i != len(file_mask) - 1 and file_mask[i+1] not in SALPH and file_mask[i+1] != ".":
+					sp_indxs.append([i, 1])
+				elif i > 0 and file_mask[i-1] not in SALPH and file_mask[i-1] != ".":
+					sp_indxs.append([i, -1])
+				else:
+					continue
 			else:
-				continue
+				if 0 < i < len(file_mask) - 1 and file_mask[i+1] not in SALPH and file_mask[-1] not in SALPH:
+					sp_indxs.append([i, 0])
 
 	name, ext = file_mask.split(".")
 	name, ext = list(name), list(ext)
