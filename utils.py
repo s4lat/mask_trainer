@@ -33,7 +33,7 @@ def get_invalid_txt_by_mask(file_mask):
 	sp_indxs = []
 	for i, s in enumerate(file_mask):
 		if s in SALPH:
-			if s == "*"
+			if s == "*":
 				if  i != len(file_mask) - 1 and file_mask[i+1] not in SALPH and file_mask[i+1] != ".":
 					sp_indxs.append([i, 1])
 				elif i > 0 and file_mask[i-1] not in SALPH and file_mask[i-1] != ".":
