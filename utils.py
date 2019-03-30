@@ -30,6 +30,9 @@ def get_valid_txt_by_mask(mask, ALPH=ALPH):
 
 def get_invalid_txt_by_mask(file_mask):
 	nALPH = ALPH
+	while True in [file_mask.find(i) > -1 for i in ["*?*", "?*", "*?"]]:
+		file_mask = file_mask.replace("*?*", "?").replace("?*", "?").replace("*?", "?")
+
 	sp_indxs = []
 	for i, s in enumerate(file_mask):
 		if s in SALPH:
@@ -41,8 +44,7 @@ def get_invalid_txt_by_mask(file_mask):
 				else:
 					continue
 			else:
-				if 0 < i < len(file_mask) - 1 and file_mask[i+1] not in SALPH and file_mask[-1] not in SALPH:
-					sp_indxs.append([i, 0])
+				sp_indxs.append([i, None])
 
 	name, ext = file_mask.split(".")
 	name, ext = list(name), list(ext)

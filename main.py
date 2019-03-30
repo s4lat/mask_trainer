@@ -1,33 +1,36 @@
 from utils import *
 import random as rand
+from colorama import init
 import os
 
-line = "-------------------------------------"
+init()
+
+line = "\033[36m-------------------------------------------\033[0m"
 game_frame = (
 """
 %s
-\t\t\tСчёт: %s
-Выберите подходящее под маску имя файла
+\033[33;1m\t\t\t\tСчёт: %s
+Выберите подходящее под маску имя файла\033[0m
 %s
-Маска: %s
-Варианты ответов:
+\033[32;1mМаска: %s\033[0m
+\033[37;1mВарианты ответов:
 \t1. %s
 \t2. %s
 \t3. %s
-\t4. %s
+\t4. %s\033[0m
 %s
 """)
 
 inter_frame = (
 """
 %s
-\t\t\tСчёт: %s
-Вариант ответа %s - %s
+\033[33;1m\t\t\tСчёт: %s\033[0m
+\033[37;1mВариант ответа %s - %s
 %s
 \t1. %s
 \t2. %s
 \t3. %s
-\t4. %s
+\t4. %s\033[0m
 %s
 """)
 
@@ -45,16 +48,16 @@ def intermFrame(inp, valid_answer, answers, mask, score):
 
 	cprint(inter_frame % 
 		((line, 
-		"%s + 1" % (score - 1) if right else "%s - 1" % (score + 1),
-		inp + 1, "Верный" if right else "Неверный",
+		"\033[32;1m%s + 1\033[0m" % (score - 1) if right else "\033[31;1m%s - 1\033[0m" % (score + 1),
+		inp + 1, "\033[32;1mВерный\033[0m" if right else "\033[31;1mНеверный\033[0m",
 		line,
-		) + tuple([answ + "  << Верный ответ" if i == inp else answ + "  << Неверный ответ" for i, answ in enumerate(answers)]) +
+		) + tuple([answ + "  \033[32;1m<< Верный ответ\033[0m" if answ == valid_answer else answ + "  \033[31;1m<< Неверный ответ\033[0m" for answ in answers]) +
 		tuple([line])))
 
-	inp = input("Нажмите [ENTER], чтобы продолжить или q + [ENTER], чтобы выйти.")
+	inp = input("\033[33;1mНажмите [ENTER], чтобы продолжить или q + [ENTER], чтобы выйти.\033[0m")
 
 	if inp == "q":
-		cprint("Итоговый счет: %s" % score)
+		cprint("\033[33;1mИтоговый счет: %s\033[0m" % score)
 		return
 	else:
 		return gameFrame(score)
