@@ -51,7 +51,7 @@ def intermFrame(inp, valid_answer, answers, mask, score):
 		"\033[32;1m%s + 1\033[0m" % (score - 1) if right else "\033[31;1m%s - 1\033[0m" % (score + 1),
 		inp + 1, "\033[32;1mВерный\033[0m" if right else "\033[31;1mНеверный\033[0m",
 		line,
-		) + tuple([answ + "  \033[32;1m<< Верный ответ\033[0m" if answ == valid_answer else answ + "  \033[31;1m<< Неверный ответ\033[0m" for answ in answers]) +
+		) + tuple(["\033[37;1m"+answ + "  \033[0m\033[32;1m<< Верный ответ\033[0m" if answ == valid_answer else answ + "  \033[31;1m<< Неверный ответ\033[0m" for answ in answers]) +
 		tuple([line])))
 
 	inp = input("\033[33;1mНажмите [ENTER], чтобы продолжить или q + [ENTER], чтобы выйти.\033[0m")
