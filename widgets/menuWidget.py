@@ -18,21 +18,35 @@ class MenuWidget(QtWidgets.QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(605, 506)
-        Form.setMaximumSize(QtCore.QSize(864, 608))
-        self.gridLayout = QtWidgets.QGridLayout(Form)
-        self.gridLayout.setObjectName("gridLayout")
+        Form.setMaximumSize(QtCore.QSize(9999999, 9999999))
+        self.hbox = QtWidgets.QHBoxLayout(Form)
+        self.vbox = QtWidgets.QVBoxLayout()
+        self.hbox.addLayout(self.vbox)
+        self.vbox.setObjectName("vbox")
+        Form.setStyleSheet("""
+QPushButton{
+border-width: 2px;
+border-color: blue;
+border-radius: 32px;
+border-style: outset;
+font-size: 24px;
+}
+QPushButton::hover{
+border-color: red;
+}
+""")
         self.playBtn = QtWidgets.QPushButton(Form)
         self.playBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.playBtn.setObjectName("playBtn")
-        self.gridLayout.addWidget(self.playBtn, 0, 0, 1, 1)
+        self.vbox.addWidget(self.playBtn)
         self.settingsBtn = QtWidgets.QPushButton(Form)
         self.settingsBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.settingsBtn.setObjectName("settingsBtn")
-        self.gridLayout.addWidget(self.settingsBtn, 2, 0, 1, 1)
+        self.vbox.addWidget(self.settingsBtn)
         self.exitBtn = QtWidgets.QPushButton(Form)
         self.exitBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.exitBtn.setObjectName("exitBtn")
-        self.gridLayout.addWidget(self.exitBtn, 3, 0, 1, 1)
+        self.vbox.addWidget(self.exitBtn)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

@@ -4,6 +4,15 @@ from cfg import *
 
 SALPH = "?*" # Алфавит специальных символов
 
+class Stage:
+	def __init__(self, options=4):
+		self.mask = generate_mask()
+		self.answers = [get_invalid_txt_by_mask(self.mask) for i in range(options-1)]
+		self.valid_answer = get_valid_txt_by_mask(self.mask)
+		self.answers.append(self.valid_answer)
+		rand.shuffle(self.answers)
+
+
 def generate_mask():
 	name = [rand.choice(ALPH) for i in range(MAX_NAME_LEN-rand.randint(0, MAX_NAME_LEN-MIN_NAME_LEN))]
 	ext = [rand.choice(ALPH.lower()) for i in range(MAX_EXT_LEN-rand.randint(0, MAX_EXT_LEN-MIN_EXT_LEN))]
@@ -65,5 +74,3 @@ def get_invalid_txt_by_mask(file_mask):
 			ext[bad_sp_ind[0]+bad_sp_ind[1]] = rand.choice(nALPH)
 
 	return get_valid_txt_by_mask("".join(name)+"."+"".join(ext), nALPH)
-
-

@@ -19,6 +19,20 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+QPushButton{
+border-width: 2px;
+background-color: rgb(255, 248, 186);
+border-color: blue;
+border-radius: 32px;
+border-style: outset;
+}
+QPushButton::hover{
+border-color: red;
+}
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QPushButton" name="playBtn">
@@ -27,6 +41,9 @@
        <width>250</width>
        <height>75</height>
       </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Начать</string>

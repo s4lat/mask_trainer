@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>340</height>
+    <width>488</width>
+    <height>410</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -23,45 +23,21 @@
    <string notr="true">alternate-background-color: rgb(255, 0, 0);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
-     <property name="spacing">
-      <number>-1</number>
+   <item row="13" column="0">
+    <widget class="QPushButton" name="backBtn">
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>45</height>
+      </size>
      </property>
-     <property name="bottomMargin">
-      <number>0</number>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="maximumSize">
-        <size>
-         <width>512</width>
-         <height>64</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>24</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 248, 186);
-
-border-color: rgb(100, 100, 100);
-border-style: outset;
-border-width: 1px;
-border-radius: 3px;
-</string>
-       </property>
-       <property name="text">
-        <string>Выберите подходящее под маску имя файла</string>
-       </property>
-       <property name="margin">
-        <number>-4</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <property name="text">
+      <string>Вернуться в меню</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="maskLabel">
@@ -96,146 +72,45 @@ border-radius: 3px;
      </property>
     </widget>
    </item>
-   <item row="13" column="2">
-    <widget class="QPushButton" name="replyBtn">
-     <property name="maximumSize">
-      <size>
-       <width>300</width>
-       <height>75</height>
-      </size>
+   <item row="2" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+     <property name="spacing">
+      <number>-1</number>
      </property>
-     <property name="styleSheet">
-      <string notr="true"/>
+     <property name="bottomMargin">
+      <number>0</number>
      </property>
-     <property name="text">
-      <string>Ответить</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0">
-    <widget class="QPushButton" name="backBtn">
-     <property name="maximumSize">
-      <size>
-       <width>300</width>
-       <height>45</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Вернуться в меню</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>512</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>24</pointsize>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 248, 186);
+        <string notr="true">background-color: rgba(255, 0, 0, 135);
+
 border-color: rgb(100, 100, 100);
 border-style: outset;
 border-width: 1px;
 border-radius: 3px;
 </string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
-        <property name="spacing">
-         <number>-1</number>
-        </property>
-        <property name="leftMargin">
-         <number>23</number>
-        </property>
-        <property name="topMargin">
-         <number>1</number>
-        </property>
-        <property name="bottomMargin">
-         <number>1</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_4">
-          <property name="maximumSize">
-           <size>
-            <width>256</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-width: 0px;</string>
-          </property>
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-          <property name="tristate">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_3">
-          <property name="maximumSize">
-           <size>
-            <width>256</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-width: 0px;</string>
-          </property>
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox_2">
-          <property name="maximumSize">
-           <size>
-            <width>256</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-width: 0px;</string>
-          </property>
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox">
-          <property name="maximumSize">
-           <size>
-            <width>256</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-width: 0px;</string>
-          </property>
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <property name="text">
+        <string>Вариант ответа - верен!</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>-4</number>
+       </property>
       </widget>
      </item>
     </layout>
@@ -269,6 +144,134 @@ border-radius: 3px;
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
+   </item>
+   <item row="13" column="2">
+    <widget class="QPushButton" name="replyBtn">
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>75</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Продолжить</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 248, 186);
+border-color: rgb(100, 100, 100);
+border-style: outset;
+border-width: 1px;
+border-radius: 3px;
+</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
+        <property name="spacing">
+         <number>-1</number>
+        </property>
+        <property name="leftMargin">
+         <number>23</number>
+        </property>
+        <property name="topMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>1</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="checkBox_4">
+          <property name="maximumSize">
+           <size>
+            <width>512</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-width: 0px;</string>
+          </property>
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_3">
+          <property name="maximumSize">
+           <size>
+            <width>512</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-width: 0px;</string>
+          </property>
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_2">
+          <property name="maximumSize">
+           <size>
+            <width>512</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-width: 0px;</string>
+          </property>
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="maximumSize">
+           <size>
+            <width>512</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-width: 0px;</string>
+          </property>
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
