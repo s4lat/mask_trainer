@@ -20,7 +20,7 @@ class IntermWidget(QtWidgets.QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(605, 506)
-        Form.setMaximumSize(QtCore.QSize(9999999, 9999999))
+        Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
         Form.setStyleSheet("""
 QPushButton{
 border-width: 2px;
@@ -132,6 +132,7 @@ border-color: red;
         self.gridLayout.addLayout(self.horizontalLayout_2, 5, 0, 1, 3)
 
         self.retranslateUi(Form)
+        self.backBtn.clicked.connect(self.parent().backToMenu)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -148,12 +149,15 @@ border-color: red;
 
         for i, checkBox in enumerate(self.checkBoxes):
             if self.stage.valid_answer == self.stage.answers[i]:
-                checkBox.setChecked(True)
                 checkBox.setText(_translate("Form", "%s" % (self.stage.answers[i]
-                                                             + "\t <<Верный ответ")))
+                                            + "\t\t <<Верный ответ")))
             else:
                 checkBox.setText(_translate("Form", "%s" % self.stage.answers[i]))
-            checkBox.setCheckable(False)
+
+            if self.oldCheckBoxes[i].isChecked():
+                checkBox.setChecked(True)
+            else:
+                checkBox.setCheckable(False)
 
         self.label_2.setText(_translate("Form", "Счет: %s" % self.parent().score))
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))

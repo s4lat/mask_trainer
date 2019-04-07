@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>605</width>
-    <height>506</height>
+    <width>632</width>
+    <height>430</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -23,7 +23,6 @@
    <string notr="true">
 QPushButton{
 border-width: 2px;
-background-color: rgb(255, 248, 186);
 border-color: blue;
 border-radius: 32px;
 border-style: outset;
@@ -33,7 +32,7 @@ border-color: red;
 }
 </string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <widget class="QPushButton" name="playBtn">
      <property name="maximumSize">
@@ -50,7 +49,7 @@ border-color: red;
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QPushButton" name="settingsBtn">
      <property name="maximumSize">
       <size>
@@ -63,7 +62,7 @@ border-color: red;
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QPushButton" name="exitBtn">
      <property name="maximumSize">
       <size>

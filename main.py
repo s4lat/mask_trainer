@@ -5,11 +5,13 @@ import random as rand
 from widgets.gameWidget import GameWidget
 from widgets.menuWidget import MenuWidget
 from widgets.intermWidget import IntermWidget
+from widgets.settingsWidget import SettingsWidget
 import sys, utils
 
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__()
+		self.stageGenerator = utils.StageGenerator(utils.readSettings())
 		self.central_widget = QStackedWidget()
 		self.setCentralWidget(self.central_widget)
 
@@ -18,19 +20,26 @@ class MainWindow(QMainWindow):
 		self.central_widget.backToMenu = self.backToMenu
 		self.central_widget.gameToInterm = self.gameToInterm
 		self.central_widget.intermToGame = self.intermToGame
+		self.central_widget.stageGenerator = self.stageGenerator
 
 
-		self.menu_widget.exitBtn.clicked.connect(self.close)
 		self.menu_widget.playBtn.clicked.connect(self.menuToGame)
+		self.menu_widget.settingsBtn.clicked.connect(self.menuToSettings)
+		self.menu_widget.exitBtn.clicked.connect(self.close)
+		
 		self.setGeometry(0, 0, 605, 506)
+
+	def menuToSettings(self):
+		settings_widget = SettingsWidget(self)
+		self.central_widget.addWidget(settings_widget)
+		self.central_widget.setCurrentWidget(settings_widget)
 
 	def menuToGame(self):
 		self.score = 0
-		stage = utils.Stage(12)
+		stage = utils.Stage(self.stageGenerator)
 		game_widget = GameWidget(stage=stage, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
-		game_widget.backBtn.clicked.connect(self.backToMenu)
 
 	def gameToInterm(self, stage, checkboxes):
 		valid = False
@@ -42,15 +51,12 @@ class MainWindow(QMainWindow):
 		interm_widget = IntermWidget(stage, checkboxes, valid, parent=self)		
 		self.central_widget.addWidget(interm_widget)
 		self.central_widget.setCurrentWidget(interm_widget)
-		interm_widget.backBtn.clicked.connect(self.backToMenu)
 
 	def intermToGame(self):
-		stage = utils.Stage(3)
+		stage = utils.Stage(self.stageGenerator)
 		game_widget = GameWidget(stage=stage, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
-		game_widget.backBtn.clicked.connect(self.backToMenu)
-
 
 	def backToMenu(self):
 		self.central_widget.setCurrentWidget(self.menu_widget)

@@ -18,18 +18,22 @@ class MenuWidget(QtWidgets.QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(605, 506)
-        Form.setMaximumSize(QtCore.QSize(9999999, 9999999))
-        self.hbox = QtWidgets.QHBoxLayout(Form)
+        Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
+
+        self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setObjectName("gridLayout")
+        self.hbox = QtWidgets.QHBoxLayout()
         self.vbox = QtWidgets.QVBoxLayout()
         self.hbox.addLayout(self.vbox)
         self.vbox.setObjectName("vbox")
+        self.gridLayout.addLayout(self.hbox, 0, 0, 1, 1)
         Form.setStyleSheet("""
 QPushButton{
 border-width: 2px;
 border-color: blue;
 border-radius: 32px;
 border-style: outset;
-font-size: 24px;
+font-size: 18px;
 }
 QPushButton::hover{
 border-color: red;

@@ -18,7 +18,7 @@ class GameWidget(QtWidgets.QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(605, 506)
-        Form.setMaximumSize(QtCore.QSize(9999999, 9999999))
+        Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
         Form.move(self.parent().rect().center())
         Form.setStyleSheet("""
 QPushButton{
@@ -133,6 +133,7 @@ border-color: red;
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        self.backBtn.clicked.connect(self.parent().backToMenu)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
