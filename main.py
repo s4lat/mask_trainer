@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
 
 	def menuToGame(self):
 		self.score = 0
-		stage = utils.Stage(self.stageGenerator)
+		stage = utils.Stage(self.central_widget.stageGenerator)
 		game_widget = GameWidget(stage=stage, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
 		self.central_widget.setCurrentWidget(interm_widget)
 
 	def intermToGame(self):
-		stage = utils.Stage(self.stageGenerator)
+		stage = utils.Stage(self.central_widget.stageGenerator)
 		game_widget = GameWidget(stage=stage, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)

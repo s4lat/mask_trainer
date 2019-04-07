@@ -24,18 +24,11 @@ class SettingsWidget(QtWidgets.QWidget):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(605, 506)
-        Form.setMaximumSize(QtCore.QSize(864, 608))
-        Form.setStyleSheet("\n"
-"QPushButton{\n"
-"border-width: 2px;\n"
-"border-color: blue;\n"
-"border-radius: 24px;\n"
-"border-style: outset;\n"
-"}\n"
-"QPushButton::hover{\n"
-"border-color: red;\n"
-"}\n"
-"")
+        Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        Form.setStyleSheet("""
+QWidget{
+font-size: 18px;
+}""")
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()

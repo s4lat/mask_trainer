@@ -21,17 +21,25 @@ class IntermWidget(QtWidgets.QWidget):
         Form.setObjectName("Form")
         Form.resize(605, 506)
         Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        color = "rgba(0, 255, 0, 135)" if self.valid else"rgba(255, 0, 0, 165)"
         Form.setStyleSheet("""
-QPushButton{
-border-width: 2px;
-border-color: blue;
-border-radius: 16px;
-border-style: outset;
-font-size: 16px;
+QWidget{
+font-size: 18px;
 }
-QPushButton::hover{
-border-color: red;
-}""")
+QLabel{
+border-width: 1px;
+border-radius: 10px;
+border-style: outset;
+}
+QLabel#label{
+background-color: %s;
+}
+QCheckBox{
+color: rgba(150, 0, 0, 255);
+}
+QCheckBox#valid_checkBox{
+color: rgba(0, 190, 0, 255);
+}""" % color)
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
         self.backBtn = QtWidgets.QPushButton(Form)
@@ -44,13 +52,6 @@ border-color: red;
         font = QtGui.QFont()
         font.setPointSize(16)
         self.maskLabel.setFont(font)
-        self.maskLabel.setStyleSheet("background-color: rgb(190, 255, 200);\n"
-"\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-style: outset;\n"
-"border-width: 1px;\n"
-"border-radius: 3px;\n"
-"")
         self.maskLabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.maskLabel.setScaledContents(False)
         self.maskLabel.setObjectName("maskLabel")
@@ -59,18 +60,10 @@ border-color: red;
         self.horizontalLayout.setContentsMargins(-1, -1, -1, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setMaximumSize(QtCore.QSize(512, 64))
+        self.label.setMaximumSize(QtCore.QSize(16777215, 64))
         font = QtGui.QFont()
         font.setPointSize(24)
         self.label.setFont(font)
-        color = "rgba(0, 255, 0, 135)" if self.valid else"rgba(255, 0, 0, 135)"
-        self.label.setStyleSheet("background-color: %s;\n"
-"\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-style: outset;\n"
-"border-width: 1px;\n"
-"border-radius: 3px;\n"
-""%color)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
@@ -80,13 +73,6 @@ border-color: red;
         font = QtGui.QFont()
         font.setPointSize(16)
         self.label_2.setFont(font)
-        self.label_2.setStyleSheet("background-color: rgb(190, 255, 200);\n"
-"\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-style: outset;\n"
-"border-width: 1px;\n"
-"border-radius: 3px;\n"
-"")
         self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 3, 2, 1, 1)
@@ -99,12 +85,6 @@ border-color: red;
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.groupBox = QtWidgets.QGroupBox(Form)
-        self.groupBox.setStyleSheet("background-color: rgb(255, 248, 186);\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-style: outset;\n"
-"border-width: 1px;\n"
-"border-radius: 3px;\n"
-"")
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
         self.verticalLayout.setContentsMargins(23, 1, -1, 1)
@@ -150,7 +130,8 @@ border-color: red;
         for i, checkBox in enumerate(self.checkBoxes):
             if self.stage.valid_answer == self.stage.answers[i]:
                 checkBox.setText(_translate("Form", "%s" % (self.stage.answers[i]
-                                            + "\t\t <<Верный ответ")))
+                                            + "\t\t << Верный ответ")))
+                checkBox.setObjectName("valid_checkBox")
             else:
                 checkBox.setText(_translate("Form", "%s" % self.stage.answers[i]))
 

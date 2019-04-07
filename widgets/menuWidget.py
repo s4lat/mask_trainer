@@ -28,17 +28,9 @@ class MenuWidget(QtWidgets.QWidget):
         self.vbox.setObjectName("vbox")
         self.gridLayout.addLayout(self.hbox, 0, 0, 1, 1)
         Form.setStyleSheet("""
-QPushButton{
-border-width: 2px;
-border-color: blue;
-border-radius: 32px;
-border-style: outset;
+QWidget{
 font-size: 18px;
-}
-QPushButton::hover{
-border-color: red;
-}
-""")
+}""")
         self.playBtn = QtWidgets.QPushButton(Form)
         self.playBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.playBtn.setObjectName("playBtn")
