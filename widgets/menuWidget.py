@@ -35,6 +35,10 @@ font-size: 18px;
         self.playBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.playBtn.setObjectName("playBtn")
         self.vbox.addWidget(self.playBtn)
+        self.helpBtn = QtWidgets.QPushButton(Form)
+        self.helpBtn.setMaximumSize(QtCore.QSize(250, 75))
+        self.helpBtn.setObjectName("helpBtn")
+        self.vbox.addWidget(self.helpBtn)
         self.settingsBtn = QtWidgets.QPushButton(Form)
         self.settingsBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.settingsBtn.setObjectName("settingsBtn")
@@ -51,5 +55,6 @@ font-size: 18px;
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.playBtn.setText(_translate("Form", "Начать"))
+        self.helpBtn.setText(_translate("Form", "Теория"))
         self.settingsBtn.setText(_translate("Form", "Настройки"))
         self.exitBtn.setText(_translate("Form", "Выход"))

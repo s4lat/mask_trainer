@@ -6,13 +6,14 @@ from widgets.gameWidget import GameWidget
 from widgets.menuWidget import MenuWidget
 from widgets.intermWidget import IntermWidget
 from widgets.settingsWidget import SettingsWidget
+from widgets.helpDialog import HelpDialog
 import sys, utils
 
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__()
-		self.stageGenerator = utils.StageGenerator(utils.readSettings())
 		self.central_widget = QStackedWidget()
+		self.stageGenerator = utils.StageGenerator(utils.readSettings())
 		self.setCentralWidget(self.central_widget)
 
 		self.menu_widget = MenuWidget(self)
@@ -25,7 +26,11 @@ class MainWindow(QMainWindow):
 
 		self.menu_widget.playBtn.clicked.connect(self.menuToGame)
 		self.menu_widget.settingsBtn.clicked.connect(self.menuToSettings)
+		self.menu_widget.helpBtn.clicked.connect(self.showHelpDialog)
 		self.menu_widget.exitBtn.clicked.connect(self.close)
+
+		self.helpShortcut = QShortcut(QKeySequence("f1"), self)
+		self.helpShortcut.activated.connect(self.showHelpDialog)
 		
 		self.setGeometry(0, 0, 605, 506)
 
@@ -57,6 +62,12 @@ class MainWindow(QMainWindow):
 		game_widget = GameWidget(stage=stage, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
+
+	@pyqtSlot()
+	def showHelpDialog(self):
+		helpDialog = HelpDialog(self)
+		helpDialog.show()
+
 
 	def backToMenu(self):
 		self.central_widget.setCurrentWidget(self.menu_widget)

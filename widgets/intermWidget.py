@@ -38,7 +38,13 @@ QCheckBox{
 color: rgba(150, 0, 0, 255);
 }
 QCheckBox#valid_checkBox{
-color: rgba(0, 190, 0, 255);
+color: rgba(0, 130, 0, 255);
+}
+QLabel#scoreLabel{
+border-radius: 3px;
+}
+QLabel#maskLabel{
+border-radius: 3px;
 }""" % color)
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
@@ -68,14 +74,14 @@ color: rgba(0, 190, 0, 255);
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 3)
-        self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setMaximumSize(QtCore.QSize(256, 25))
+        self.scoreLabel = QtWidgets.QLabel(Form)
+        self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 3, 2, 1, 1)
+        self.scoreLabel.setFont(font)
+        self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.scoreLabel.setObjectName("scoreLabel")
+        self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
         self.nextBtn = QtWidgets.QPushButton(Form)
         self.nextBtn.setMaximumSize(QtCore.QSize(300, 75))
         self.nextBtn.setStyleSheet("")
@@ -140,7 +146,7 @@ color: rgba(0, 190, 0, 255);
             else:
                 checkBox.setCheckable(False)
 
-        self.label_2.setText(_translate("Form", "Счет: %s" % self.parent().score))
+        self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().score))
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
         ##############################My changes
 

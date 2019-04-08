@@ -28,6 +28,12 @@ QLabel{
 border-width: 1px;
 border-radius: 10px;
 border-style: outset;
+}
+QLabel#scoreLabel{
+border-radius: 3px;
+}
+QLabel#maskLabel{
+border-radius: 3px;
 }""")
 
         self.gridLayout = QtWidgets.QGridLayout(Form)
@@ -56,13 +62,10 @@ border-style: outset;
         self.gridLayout.addWidget(self.maskLabel, 3, 0, 1, 1)
         self.replyBtn = QtWidgets.QPushButton(Form)
         self.replyBtn.setMaximumSize(QtCore.QSize(300, 75))
-        self.replyBtn.setStyleSheet("")
         self.replyBtn.setObjectName("replyBtn")
-
         self.gridLayout.addWidget(self.replyBtn, 13, 2, 1, 1)
         self.backBtn = QtWidgets.QPushButton(Form)
         self.backBtn.setMaximumSize(QtCore.QSize(300, 45))
-        self.backBtn.setStyleSheet("")
         self.backBtn.setObjectName("backBtn")
         self.gridLayout.addWidget(self.backBtn, 13, 0, 1, 1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -93,14 +96,14 @@ border-style: outset;
         self.horizontalLayout_2.addWidget(self.groupBox)
         self.gridLayout.addLayout(self.horizontalLayout_2, 5, 0, 1, 3)
 
-        self.label_2 = QtWidgets.QLabel(Form)
-        self.label_2.setMaximumSize(QtCore.QSize(256, 25))
+        self.scoreLabel = QtWidgets.QLabel(Form)
+        self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout.addWidget(self.label_2, 3, 2, 1, 1)
+        self.scoreLabel.setFont(font)
+        self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.scoreLabel.setObjectName("scoreLabel")
+        self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
         self.replyBtn.clicked.connect(partial(self.parent().gameToInterm,
                                             self.stage, self.checkBoxes))
 
@@ -121,7 +124,7 @@ border-style: outset;
         for i, checkBox in enumerate(self.checkBoxes):
             checkBox.setText(_translate("Form", self.stage.answers[i]))
 
-        self.label_2.setText(_translate("Form", "Счет: %s" % self.parent().score))
+        self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().score))
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
         #########################My changes
 
