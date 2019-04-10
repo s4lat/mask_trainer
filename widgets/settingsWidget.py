@@ -11,13 +11,15 @@ from functools import partial
 import utils, json
 
 class SettingsWidget(QtWidgets.QWidget):
-    def __init__(self,  parent=None):
+    def __init__(self,  test, parent=None):
         super(SettingsWidget, self).__init__(parent)
+        self.test = test
 
         self.nameText = "<html><head/><body><p align=\"center\">Макс. длина имени маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.extText = "<html><head/><body><p align=\"center\">Макс. длина расширения маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.starText = "<html><head/><body><p align=\"center\"><span>Макс. длина последовательности</span></p><p align=\"center\"><span\">на месте &quot;</span><span style=\"font-weight:600;\">*</span><span>&quot;:</span></p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.optText = "<html><head/><body><p align=\"center\">Кол-во вариантов ответа:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
+        self.answersText = "<html><head/><body><p align=\"center\">Кол-во вопросов:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.settings = utils.readSettings()
         self.setupUi(self)
 
@@ -33,6 +35,50 @@ font-size: 18px;
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
+
+        if self.test:
+            self.answersLabel = QtWidgets.QLabel(Form)
+            self.answersLabel.setMaximumSize(QtCore.QSize(312, 64))
+            font = QtGui.QFont()
+            font.setPointSize(16)
+            self.answersLabel.setFont(font)
+            self.answersLabel.setAlignment(QtCore.Qt.AlignCenter)
+            self.answersLabel.setObjectName("answersLabel")
+            self.verticalLayout.addWidget(self.answersLabel)
+            self.answersSlider = QtWidgets.QSlider(Form)
+            sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+            sizePolicy.setHorizontalStretch(0)
+            sizePolicy.setVerticalStretch(0)
+            sizePolicy.setHeightForWidth(self.answersSlider.sizePolicy().hasHeightForWidth())
+            self.answersSlider.setSizePolicy(sizePolicy)
+            self.answersSlider.setMaximumSize(QtCore.QSize(312, 17))
+            self.answersSlider.setMinimum(3)
+            self.answersSlider.setMaximum(100)
+            self.answersSlider.setOrientation(QtCore.Qt.Horizontal)
+            self.answersSlider.setObjectName("answersSlider")
+            self.verticalLayout.addWidget(self.answersSlider)
+
+        self.optLabel = QtWidgets.QLabel(Form)
+        self.optLabel.setMaximumSize(QtCore.QSize(312, 64))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.optLabel.setFont(font)
+        self.optLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.optLabel.setObjectName("optLabel")
+        self.verticalLayout.addWidget(self.optLabel)
+        self.optSlider = QtWidgets.QSlider(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.optSlider.sizePolicy().hasHeightForWidth())
+        self.optSlider.setSizePolicy(sizePolicy)
+        self.optSlider.setMaximumSize(QtCore.QSize(312, 17))
+        self.optSlider.setMinimum(3)
+        self.optSlider.setMaximum(15)
+        self.optSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.optSlider.setObjectName("optSlider")
+        self.verticalLayout.addWidget(self.optSlider)
+
         self.nameLabel = QtWidgets.QLabel(Form)
         self.nameLabel.setMaximumSize(QtCore.QSize(312, 64))
         font = QtGui.QFont()
@@ -51,7 +97,7 @@ font-size: 18px;
         self.nameSlider.setSizePolicy(sizePolicy)
         self.nameSlider.setMaximumSize(QtCore.QSize(312, 17))
         self.nameSlider.setMinimum(3)
-        self.nameSlider.setMaximum(15)
+        self.nameSlider.setMaximum(12)
         self.nameSlider.setOrientation(QtCore.Qt.Horizontal)
         self.nameSlider.setTickPosition(QtWidgets.QSlider.NoTicks)
         self.nameSlider.setObjectName("nameSlider")
@@ -72,7 +118,7 @@ font-size: 18px;
         self.extSlider.setSizePolicy(sizePolicy)
         self.extSlider.setMaximumSize(QtCore.QSize(312, 17))
         self.extSlider.setMinimum(3)
-        self.extSlider.setMaximum(15)
+        self.extSlider.setMaximum(12)
         self.extSlider.setOrientation(QtCore.Qt.Horizontal)
         self.extSlider.setObjectName("extSlider")
         self.verticalLayout.addWidget(self.extSlider)
@@ -99,30 +145,11 @@ font-size: 18px;
         self.starSlider.setSizePolicy(sizePolicy)
         self.starSlider.setMaximumSize(QtCore.QSize(312, 17))
         self.starSlider.setMinimum(3)
-        self.starSlider.setMaximum(15)
+        self.starSlider.setMaximum(6)
         self.starSlider.setOrientation(QtCore.Qt.Horizontal)
         self.starSlider.setObjectName("starSlider")
         self.verticalLayout.addWidget(self.starSlider)
-        self.optLabel = QtWidgets.QLabel(Form)
-        self.optLabel.setMaximumSize(QtCore.QSize(312, 64))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.optLabel.setFont(font)
-        self.optLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.optLabel.setObjectName("optLabel")
-        self.verticalLayout.addWidget(self.optLabel)
-        self.optSlider = QtWidgets.QSlider(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.optSlider.sizePolicy().hasHeightForWidth())
-        self.optSlider.setSizePolicy(sizePolicy)
-        self.optSlider.setMaximumSize(QtCore.QSize(312, 17))
-        self.optSlider.setMinimum(3)
-        self.optSlider.setMaximum(15)
-        self.optSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.optSlider.setObjectName("optSlider")
-        self.verticalLayout.addWidget(self.optSlider)
+
         self.applyBtn = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -161,7 +188,10 @@ font-size: 18px;
         self.extSlider.valueChanged.connect(partial(self.updateValue, self.extLabel, self.extText, self.extSlider))
         self.starSlider.valueChanged.connect(partial(self.updateValue, self.starLabel, self.starText, self.starSlider))
         self.optSlider.valueChanged.connect(partial(self.updateValue, self.optLabel, self.optText, self.optSlider))
-
+        
+        if self.test:
+            self.answersSlider.valueChanged.connect(partial(self.updateValue, self.answersLabel, self.answersText, self.answersSlider))
+        
         self.applyBtn.clicked.connect(self.applySettings)
         self.backBtn.clicked.connect(self.parent().backToMenu)
         ##########################My changes
@@ -175,17 +205,26 @@ font-size: 18px;
         self.extLabel.setText(_translate("Form", self.extText % self.settings["MAX_EXT_LEN"]))
         self.starLabel.setText(_translate("Form", self.starText % self.settings["MAX_STAR_LEN"]))
         self.optLabel.setText(_translate("Form", self.optText % self.settings["ANSWER_OPTS"]))
-        self.applyBtn.setText(_translate("Form", "Применить"))
+        if self.test:
+            self.answersLabel.setText(_translate("Form", self.answersText % self.settings["ANSWERS_COUNT"]))
+
+        self.applyBtn.setText(_translate("Form", "Готово"))
         self.backBtn.setText(_translate("Form", "Вернуться в меню"))
 
     def applySettings(self):
         sets = {"MAX_NAME_LEN" : self.nameSlider.value(),
                 "MAX_EXT_LEN" : self.extSlider.value(),
                 "MAX_STAR_LEN" : self.starSlider.value(),
-                "ANSWER_OPTS" : self.optSlider.value()}
+                "ANSWER_OPTS" : self.optSlider.value(),
+                "ANSWERS_COUNT" : self.answersSlider.value() if self.test else 10}
 
         utils.writeSettings(sets)
         self.parent().stageGenerator = utils.StageGenerator(utils.readSettings())
+
+        if self.test:
+            self.parent().settingsToTest()
+        else:
+            self.parent().settingsToTrain()
 
 
     def updateValue(self, label, text, slider):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'widgets/gameWidget.ui'
+# Form implementation generated from reading ui file 'widgets/TrainWidget.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -10,8 +10,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from functools import partial
 
 class GameWidget(QtWidgets.QWidget):
-    def __init__(self, stage, parent=None):
+    def __init__(self, stage, test, last=False,  parent=None):
         super(GameWidget, self).__init__(parent)
+        self.test = test
+        self.last = last
         self.stage = stage
         self.setupUi(self)
 
@@ -30,6 +32,9 @@ border-radius: 10px;
 border-style: outset;
 }
 QLabel#scoreLabel{
+border-radius: 3px;
+}
+QLabel#countLabel{
 border-radius: 3px;
 }
 QLabel#maskLabel{
@@ -96,16 +101,34 @@ border-radius: 3px;
         self.horizontalLayout_2.addWidget(self.groupBox)
         self.gridLayout.addLayout(self.horizontalLayout_2, 5, 0, 1, 3)
 
-        self.scoreLabel = QtWidgets.QLabel(Form)
-        self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.scoreLabel.setFont(font)
-        self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.scoreLabel.setObjectName("scoreLabel")
-        self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
-        self.replyBtn.clicked.connect(partial(self.parent().gameToInterm,
-                                            self.stage, self.checkBoxes))
+        if self.test:
+            self.countLabel = QtWidgets.QLabel(Form)
+            self.countLabel.setMaximumSize(QtCore.QSize(256, 25))
+            font = QtGui.QFont()
+            font.setPointSize(16)
+            self.countLabel.setFont(font)
+            self.countLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+            self.countLabel.setObjectName("countLabel")
+            self.gridLayout.addWidget(self.countLabel, 3, 2, 1, 1)
+            if self.last:
+                self.replyBtn.clicked.connect(partial(self.parent().testToConclusion,
+                                                self.stage, self.checkBoxes))
+            else:
+                self.replyBtn.clicked.connect(partial(self.parent().testToTest,
+                                                self.stage, self.checkBoxes))
+
+
+        else:
+            self.scoreLabel = QtWidgets.QLabel(Form)
+            self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
+            font = QtGui.QFont()
+            font.setPointSize(16)
+            self.scoreLabel.setFont(font)
+            self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+            self.scoreLabel.setObjectName("scoreLabel")
+            self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
+            self.replyBtn.clicked.connect(partial(self.parent().trainToInterm,
+                                                self.stage, self.checkBoxes))
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -124,7 +147,12 @@ border-radius: 3px;
         for i, checkBox in enumerate(self.checkBoxes):
             checkBox.setText(_translate("Form", self.stage.answers[i]))
 
-        self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().score))
+        if self.test:
+            self.countLabel.setText(_translate("Form", "Вопрос: %s/%s" % (self.parent().question, 
+                                            self.parent().total_questions)))
+        else:
+            self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().score))
+        
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
         #########################My changes
 

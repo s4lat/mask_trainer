@@ -1,14 +1,21 @@
 import string, math, json
 import random as rand
 
-def writeSettings(setts = {"MAX_NAME_LEN" : 5, "MAX_EXT_LEN" : 5, "MAX_STAR_LEN" : 3, "ANSWER_OPTS" : 4}):
+default_settings = {"MAX_NAME_LEN" : 5, 
+					"MAX_EXT_LEN" : 5, 
+					"MAX_STAR_LEN" : 3, 
+					"ANSWER_OPTS" : 4, 
+					"ANSWERS_COUNT" : 10}
+
+
+def writeSettings(setts=default_settings):
 	with open("settings.json", 'w') as settings:
 		settings.write(json.dumps(setts))
 
 def readSettings():
 	try:
 		settings = json.loads(open("settings.json", "r").read())
-		if all([key in settings.keys() and type(settings[key]) == int for key in ["MAX_NAME_LEN", "MAX_EXT_LEN", "MAX_STAR_LEN", "ANSWER_OPTS"]]):
+		if all([key in settings.keys() and type(settings[key]) == int for key in default_settings.keys()]):
 			return settings
 		else:
 			raise FileNotFoundError

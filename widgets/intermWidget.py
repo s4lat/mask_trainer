@@ -86,7 +86,7 @@ border-radius: 3px;
         self.nextBtn.setMaximumSize(QtCore.QSize(300, 75))
         self.nextBtn.setStyleSheet("")
         self.nextBtn.setObjectName("nextBtn")
-        self.nextBtn.clicked.connect(self.parent().intermToGame)
+        self.nextBtn.clicked.connect(self.parent().intermToTrain)
         self.gridLayout.addWidget(self.nextBtn, 13, 2, 1, 1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
