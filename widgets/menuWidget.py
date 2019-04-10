@@ -31,14 +31,15 @@ class MenuWidget(QtWidgets.QWidget):
 QWidget{
 font-size: 18px;
 }""")
-        self.trainModeBtn = QtWidgets.QPushButton(Form)
-        self.trainModeBtn.setMaximumSize(QtCore.QSize(250, 75))
-        self.trainModeBtn.setObjectName("trainModeBtn")
-        self.vbox.addWidget(self.trainModeBtn)
+        
         self.testModeBtn = QtWidgets.QPushButton(Form)
         self.testModeBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.testModeBtn.setObjectName("testModeBtn")
         self.vbox.addWidget(self.testModeBtn)
+        self.trainModeBtn = QtWidgets.QPushButton(Form)
+        self.trainModeBtn.setMaximumSize(QtCore.QSize(250, 75))
+        self.trainModeBtn.setObjectName("trainModeBtn")
+        self.vbox.addWidget(self.trainModeBtn)
         self.helpBtn = QtWidgets.QPushButton(Form)
         self.helpBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.helpBtn.setObjectName("helpBtn")

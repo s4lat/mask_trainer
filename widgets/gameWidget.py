@@ -39,6 +39,7 @@ border-radius: 3px;
 }
 QLabel#maskLabel{
 border-radius: 3px;
+font-size: 24px;
 }""")
 
         self.gridLayout = QtWidgets.QGridLayout(Form)
@@ -51,15 +52,14 @@ border-radius: 3px;
         font = QtGui.QFont()
         font.setPointSize(24)
         self.label.setFont(font)
-        #background-color: rgb(255, 248, 186)
         self.label.setObjectName("label")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.horizontalLayout.addWidget(self.label)
         self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 3)
         self.maskLabel = QtWidgets.QLabel(Form)
-        self.maskLabel.setMaximumSize(QtCore.QSize(256, 25))
+        self.maskLabel.setMaximumSize(QtCore.QSize(512, 32))
         font = QtGui.QFont()
-        font.setPointSize(16)
+        font.setPointSize(18)
         self.maskLabel.setFont(font)
         self.maskLabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.maskLabel.setScaledContents(False)
@@ -88,7 +88,7 @@ border-radius: 3px;
         self.buttonGroup = QtWidgets.QButtonGroup(Form)
 
         for i, answers in enumerate(self.stage.answers):
-            checkBox = QtWidgets.QCheckBox(self.groupBox)
+            checkBox = QtWidgets.QRadioButton(self.groupBox)
             checkBox.setMaximumSize(QtCore.QSize(512, 25))
             checkBox.setFont(font)
             checkBox.setStyleSheet("border-width: 0px;")
@@ -155,5 +155,6 @@ border-radius: 3px;
         
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
         #########################My changes
+
 
 

@@ -21,7 +21,7 @@ class IntermWidget(QtWidgets.QWidget):
         Form.setObjectName("Form")
         Form.resize(605, 506)
         Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        color = "rgba(0, 255, 0, 135)" if self.valid else"rgba(255, 0, 0, 165)"
+        color = "rgba(0, 177, 0, 135)" if self.valid else"rgb(206, 0, 0, 165)"
         Form.setStyleSheet("""
 QWidget{
 font-size: 18px;
@@ -34,17 +34,18 @@ border-style: outset;
 QLabel#label{
 background-color: %s;
 }
-QCheckBox{
-color: rgba(150, 0, 0, 255);
+QRadioButton{
+color: rgb(206, 0, 0);
 }
-QCheckBox#valid_checkBox{
-color: rgba(0, 130, 0, 255);
+QRadioButton#valid_checkBox{
+color: rgb(0, 177, 0);
 }
 QLabel#scoreLabel{
 border-radius: 3px;
 }
 QLabel#maskLabel{
 border-radius: 3px;
+font-size: 24px;
 }""" % color)
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
@@ -54,7 +55,7 @@ border-radius: 3px;
         self.backBtn.setObjectName("backBtn")
         self.gridLayout.addWidget(self.backBtn, 13, 0, 1, 1)
         self.maskLabel = QtWidgets.QLabel(Form)
-        self.maskLabel.setMaximumSize(QtCore.QSize(256, 25))
+        self.maskLabel.setMaximumSize(QtCore.QSize(512, 32))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.maskLabel.setFont(font)
@@ -103,7 +104,7 @@ border-radius: 3px;
         self.buttonGroup = QtWidgets.QButtonGroup(Form)
 
         for i, answers in enumerate(self.stage.answers):
-            checkBox = QtWidgets.QCheckBox(self.groupBox)
+            checkBox = QtWidgets.QRadioButton(self.groupBox)
             checkBox.setMaximumSize(QtCore.QSize(512, 25))
             checkBox.setFont(font)
             checkBox.setStyleSheet("border-width: 0px;")

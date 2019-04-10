@@ -15,9 +15,9 @@ class SettingsWidget(QtWidgets.QWidget):
         super(SettingsWidget, self).__init__(parent)
         self.test = test
 
-        self.nameText = "<html><head/><body><p align=\"center\">Макс. длина имени маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
-        self.extText = "<html><head/><body><p align=\"center\">Макс. длина расширения маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
-        self.starText = "<html><head/><body><p align=\"center\"><span>Макс. длина последовательности</span></p><p align=\"center\"><span\">на месте &quot;</span><span style=\"font-weight:600;\">*</span><span>&quot;:</span></p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
+        self.nameText = "<html><head/><body><p align=\"center\">Максимальная длина имени маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
+        self.extText = "<html><head/><body><p align=\"center\">Максимальная длина расширения маски:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
+        self.starText = "<html><head/><body><p align=\"center\"><span>Максимальная длина последовательности</span></p><p align=\"center\"><span\">на месте &quot;</span><span style=\"font-weight:600;\">*</span><span>&quot;:</span></p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.optText = "<html><head/><body><p align=\"center\">Кол-во вариантов ответа:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.answersText = "<html><head/><body><p align=\"center\">Кол-во вопросов:</p><p align=\"center\"><span style=\" font-weight:600;\">%s</span></p></body></html>"
         self.settings = utils.readSettings()
@@ -38,7 +38,7 @@ font-size: 18px;
 
         if self.test:
             self.answersLabel = QtWidgets.QLabel(Form)
-            self.answersLabel.setMaximumSize(QtCore.QSize(312, 64))
+            self.answersLabel.setMaximumSize(QtCore.QSize(380, 64))
             font = QtGui.QFont()
             font.setPointSize(16)
             self.answersLabel.setFont(font)
@@ -51,7 +51,7 @@ font-size: 18px;
             sizePolicy.setVerticalStretch(0)
             sizePolicy.setHeightForWidth(self.answersSlider.sizePolicy().hasHeightForWidth())
             self.answersSlider.setSizePolicy(sizePolicy)
-            self.answersSlider.setMaximumSize(QtCore.QSize(312, 17))
+            self.answersSlider.setMaximumSize(QtCore.QSize(380, 17))
             self.answersSlider.setMinimum(3)
             self.answersSlider.setMaximum(100)
             self.answersSlider.setOrientation(QtCore.Qt.Horizontal)
@@ -59,7 +59,7 @@ font-size: 18px;
             self.verticalLayout.addWidget(self.answersSlider)
 
         self.optLabel = QtWidgets.QLabel(Form)
-        self.optLabel.setMaximumSize(QtCore.QSize(312, 64))
+        self.optLabel.setMaximumSize(QtCore.QSize(380, 64))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.optLabel.setFont(font)
@@ -72,7 +72,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.optSlider.sizePolicy().hasHeightForWidth())
         self.optSlider.setSizePolicy(sizePolicy)
-        self.optSlider.setMaximumSize(QtCore.QSize(312, 17))
+        self.optSlider.setMaximumSize(QtCore.QSize(380, 17))
         self.optSlider.setMinimum(3)
         self.optSlider.setMaximum(15)
         self.optSlider.setOrientation(QtCore.Qt.Horizontal)
@@ -80,7 +80,7 @@ font-size: 18px;
         self.verticalLayout.addWidget(self.optSlider)
 
         self.nameLabel = QtWidgets.QLabel(Form)
-        self.nameLabel.setMaximumSize(QtCore.QSize(312, 64))
+        self.nameLabel.setMaximumSize(QtCore.QSize(380, 64))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.nameLabel.setFont(font)
@@ -95,7 +95,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.nameSlider.sizePolicy().hasHeightForWidth())
         self.nameSlider.setSizePolicy(sizePolicy)
-        self.nameSlider.setMaximumSize(QtCore.QSize(312, 17))
+        self.nameSlider.setMaximumSize(QtCore.QSize(380, 17))
         self.nameSlider.setMinimum(3)
         self.nameSlider.setMaximum(12)
         self.nameSlider.setOrientation(QtCore.Qt.Horizontal)
@@ -103,7 +103,7 @@ font-size: 18px;
         self.nameSlider.setObjectName("nameSlider")
         self.verticalLayout.addWidget(self.nameSlider)
         self.extLabel = QtWidgets.QLabel(Form)
-        self.extLabel.setMaximumSize(QtCore.QSize(312, 64))
+        self.extLabel.setMaximumSize(QtCore.QSize(380, 64))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.extLabel.setFont(font)
@@ -116,7 +116,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.extSlider.sizePolicy().hasHeightForWidth())
         self.extSlider.setSizePolicy(sizePolicy)
-        self.extSlider.setMaximumSize(QtCore.QSize(312, 17))
+        self.extSlider.setMaximumSize(QtCore.QSize(380, 17))
         self.extSlider.setMinimum(3)
         self.extSlider.setMaximum(12)
         self.extSlider.setOrientation(QtCore.Qt.Horizontal)
@@ -128,7 +128,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.starLabel.sizePolicy().hasHeightForWidth())
         self.starLabel.setSizePolicy(sizePolicy)
-        self.starLabel.setMaximumSize(QtCore.QSize(312, 96))
+        self.starLabel.setMaximumSize(QtCore.QSize(380, 96))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.starLabel.setFont(font)
@@ -143,7 +143,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.starSlider.sizePolicy().hasHeightForWidth())
         self.starSlider.setSizePolicy(sizePolicy)
-        self.starSlider.setMaximumSize(QtCore.QSize(312, 17))
+        self.starSlider.setMaximumSize(QtCore.QSize(380, 17))
         self.starSlider.setMinimum(3)
         self.starSlider.setMaximum(6)
         self.starSlider.setOrientation(QtCore.Qt.Horizontal)
@@ -156,7 +156,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.applyBtn.sizePolicy().hasHeightForWidth())
         self.applyBtn.setSizePolicy(sizePolicy)
-        self.applyBtn.setMaximumSize(QtCore.QSize(312, 50))
+        self.applyBtn.setMaximumSize(QtCore.QSize(380, 50))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.applyBtn.setFont(font)
@@ -168,7 +168,7 @@ font-size: 18px;
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.backBtn.sizePolicy().hasHeightForWidth())
         self.backBtn.setSizePolicy(sizePolicy)
-        self.backBtn.setMaximumSize(QtCore.QSize(312, 50))
+        self.backBtn.setMaximumSize(QtCore.QSize(380, 50))
         font = QtGui.QFont()
         font.setPointSize(16)
         self.backBtn.setFont(font)
