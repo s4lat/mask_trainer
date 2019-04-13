@@ -35,7 +35,7 @@ class MainWindow(QMainWindow):
 		
 		self.helpShortcut = QShortcut(QKeySequence("f1"), self)
 
-		self.setWindowIcon(QIcon("assets/icon.png"))
+		self.setWindowIcon(QIcon("assets/icon.ico"))
 		self.setGeometry(0, 0, 640, 540)
 
 	def menuToSettings(self, test):
