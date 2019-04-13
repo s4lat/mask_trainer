@@ -80,5 +80,5 @@ font-size: 18px;
         self.trainModeBtn.setText(_translate("Form", "Обучение"))
         self.testModeBtn.setText(_translate("Form", "Тест"))
         self.helpBtn.setText(_translate("Form", "Теория"))
-        self.aboutBtn.setText(_translate("Form", "ℹ О программе"))
+        self.aboutBtn.setText(_translate("Form", "О программе"))
         self.exitBtn.setText(_translate("Form", "Выход"))
