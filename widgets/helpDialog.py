@@ -16,7 +16,7 @@ class HelpDialog(QtWidgets.QDialog):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(537, 271)
+        #Dialog.resize(537, 271)
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()

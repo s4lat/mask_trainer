@@ -21,7 +21,6 @@ class ConclusionWidget(QtWidgets.QWidget):
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(605, 506)
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -100,11 +99,12 @@ class ConclusionWidget(QtWidgets.QWidget):
         Form.setWindowTitle(_translate("Form", "Form"))
         
         qualityK = self.answers.count(True)/len(self.stages)*100
+        mark = 5 if qualityK > 85 else 4 if qualityK > 65 else 3 if qualityK > 35 else 2
         valid_answers = self.answers.count(True)
         invalid_answers = self.answers.count(False)
 
-        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt; font-weight:600;\">Итог:</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Качество выполнения: </span><span style=\" font-size:18pt; font-weight:600;\">%0.1f%s</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Кол-во </span><span style=\" font-size:18pt; color:#00b100;\">верных</span><span style=\" font-size:18pt;\"> ответов: </span><span style=\" font-size:18pt; font-weight:600;\">%s</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Кол-во </span><span style=\" font-size:18pt; color:#ce0000;\">неверных</span><span style=\" font-size:18pt;\"> ответов: </span><span style=\" font-size:18pt; font-weight:600;\">%s</span></p></body></html>"
-            % (qualityK, "%", valid_answers, invalid_answers)))
+        self.label.setText(_translate("Form", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt; font-weight:600;\">Итог:</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Качество выполнения: </span><span style=\" font-size:18pt; font-weight:600;\">%0.1f%s (%s)</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Кол-во </span><span style=\" font-size:18pt; color:#00b100;\">верных</span><span style=\" font-size:18pt;\"> ответов: </span><span style=\" font-size:18pt; font-weight:600;\">%s</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Кол-во </span><span style=\" font-size:18pt; color:#ce0000;\">неверных</span><span style=\" font-size:18pt;\"> ответов: </span><span style=\" font-size:18pt; font-weight:600;\">%s</span></p></body></html>"
+            % (qualityK, "%", mark, valid_answers, invalid_answers)))
     
         self.backBtn.setText(_translate("Form", "Вернуться в меню"))
 

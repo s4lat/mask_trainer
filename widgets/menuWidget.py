@@ -17,21 +17,38 @@ class MenuWidget(QtWidgets.QWidget):
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(605, 506)
         Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
-
-        self.gridLayout = QtWidgets.QGridLayout(Form)
-        self.gridLayout.setObjectName("gridLayout")
-        self.hbox = QtWidgets.QHBoxLayout()
-        self.vbox = QtWidgets.QVBoxLayout()
-        self.hbox.addLayout(self.vbox)
-        self.vbox.setObjectName("vbox")
-        self.gridLayout.addLayout(self.hbox, 0, 0, 1, 1)
         Form.setStyleSheet("""
+QWidget#Form{
+}
 QWidget{
 font-size: 18px;
 }""")
-        
+
+
+        self.main_vbox = QtWidgets.QVBoxLayout(Form)
+        self.main_vbox.addStretch(1)
+
+        self.gridLayoutHeader = QtWidgets.QGridLayout()
+        self.gridLayoutHeader.setObjectName("gridLayoutHeader")
+        self.main_vbox.addLayout(self.gridLayoutHeader, QtCore.Qt.AlignVCenter)
+
+        self.gridLayoutMenu = QtWidgets.QGridLayout()
+        self.gridLayoutMenu.setObjectName("gridLayoutMenu")
+        self.main_vbox.addLayout(self.gridLayoutMenu, QtCore.Qt.AlignTop)
+
+
+        self.header = QtWidgets.QLabel(self)
+        header_pixmap = QtGui.QPixmap("assets/header_nobg.png")
+        header_pixmap = header_pixmap.scaled(400, 200)
+        self.header.setPixmap(header_pixmap)
+        self.header.setMaximumSize(QtCore.QSize(400, 200))
+        self.header.setObjectName("header")
+        self.gridLayoutHeader.addWidget(self.header, 0, 0)
+
+        self.vbox = QtWidgets.QVBoxLayout()
+        self.gridLayoutMenu.addLayout(self.vbox, 0, 0)
+
         self.testModeBtn = QtWidgets.QPushButton(Form)
         self.testModeBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.testModeBtn.setObjectName("testModeBtn")
@@ -44,11 +61,16 @@ font-size: 18px;
         self.helpBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.helpBtn.setObjectName("helpBtn")
         self.vbox.addWidget(self.helpBtn)
+        self.aboutBtn = QtWidgets.QPushButton(Form)
+        self.aboutBtn.setMaximumSize(QtCore.QSize(250, 75))
+        self.aboutBtn.setObjectName("aboutBtn")
+        self.vbox.addWidget(self.aboutBtn)
         self.exitBtn = QtWidgets.QPushButton(Form)
         self.exitBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.exitBtn.setObjectName("exitBtn")
         self.vbox.addWidget(self.exitBtn)
 
+        self.main_vbox.addStretch(1)
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -58,4 +80,5 @@ font-size: 18px;
         self.trainModeBtn.setText(_translate("Form", "Обучение"))
         self.testModeBtn.setText(_translate("Form", "Тест"))
         self.helpBtn.setText(_translate("Form", "Теория"))
+        self.aboutBtn.setText(_translate("Form", "ℹ О программе"))
         self.exitBtn.setText(_translate("Form", "Выход"))

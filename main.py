@@ -1,13 +1,14 @@
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-import random as rand
 from widgets.gameWidget import GameWidget
 from widgets.menuWidget import MenuWidget
 from widgets.intermWidget import IntermWidget
 from widgets.settingsWidget import SettingsWidget
 from widgets.helpDialog import HelpDialog
 from widgets.conclusionWidget import ConclusionWidget
+from widgets.aboutDialog import AboutDialog
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+import random as rand
 import sys, utils
 from functools import partial
 
@@ -15,6 +16,7 @@ class MainWindow(QMainWindow):
 	def __init__(self):
 		super(MainWindow, self).__init__()
 		self.central_widget = QStackedWidget()
+		self.setObjectName("centralWidget")
 		self.stageGenerator = utils.StageGenerator(utils.readSettings())
 		self.setCentralWidget(self.central_widget)
 
@@ -28,12 +30,16 @@ class MainWindow(QMainWindow):
 		self.menu_widget.trainModeBtn.clicked.connect(partial(self.menuToSettings, test=False))
 		self.menu_widget.testModeBtn.clicked.connect(partial(self.menuToSettings, test=True))
 		self.menu_widget.helpBtn.clicked.connect(self.showHelpDialog)
+		self.menu_widget.aboutBtn.clicked.connect(self.showAboutDialog)
 		self.menu_widget.exitBtn.clicked.connect(self.close)
 		
 		self.helpShortcut = QShortcut(QKeySequence("f1"), self)
-		self.setGeometry(0, 0, 605, 506)
+
+		self.setWindowIcon(QIcon("assets/icon.png"))
+		self.setGeometry(0, 0, 640, 540)
 
 	def menuToSettings(self, test):
+
 		settings_widget = SettingsWidget(test=test, parent=self)
 		self.central_widget.addWidget(settings_widget)
 		self.central_widget.setCurrentWidget(settings_widget)
@@ -49,6 +55,7 @@ class MainWindow(QMainWindow):
 
 	def settingsToTest(self):
 		self.helpShortcut.activated.connect(self.nothing)
+
 
 		self.question = 1
 		self.stages = []
@@ -110,17 +117,22 @@ class MainWindow(QMainWindow):
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
 
-	@pyqtSlot()
 	def showHelpDialog(self):
 		helpDialog = HelpDialog(self)
 		helpDialog.show()
 
-	@pyqtSlot()
-	def nothing(self):
-		pass
+	def showAboutDialog(self):
+		aboutDialog = AboutDialog(self)
+		aboutDialog.show()
+
 	def backToMenu(self):
 		self.central_widget.setCurrentWidget(self.menu_widget)
 
+	def changeResizeEvent(self, event):
+		self.resizeEvent = event
+
+	def nothing(self):
+		pass
 
 
 

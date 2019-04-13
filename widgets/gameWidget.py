@@ -19,7 +19,6 @@ class GameWidget(QtWidgets.QWidget):
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(605, 506)
         Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
         Form.move(self.parent().rect().center())
         Form.setStyleSheet("""
@@ -30,6 +29,7 @@ QLabel{
 border-width: 1px;
 border-radius: 10px;
 border-style: outset;
+border-color: rgb(51, 51, 51);
 }
 QLabel#scoreLabel{
 border-radius: 3px;

@@ -19,7 +19,6 @@ class IntermWidget(QtWidgets.QWidget):
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(605, 506)
         Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
         color = "rgba(0, 177, 0, 135)" if self.valid else"rgb(206, 0, 0, 165)"
         Form.setStyleSheet("""
@@ -30,6 +29,7 @@ QLabel{
 border-width: 1px;
 border-radius: 10px;
 border-style: outset;
+border-color: rgb(51, 51, 51);
 }
 QLabel#label{
 background-color: %s;
