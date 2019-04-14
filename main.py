@@ -25,7 +25,12 @@ class MainWindow(QMainWindow):
 		self.central_widget.backToMenu = self.backToMenu
 		self.central_widget.stageGenerator = self.stageGenerator
 		self.central_widget.settingsToTrain = self.settingsToTrain
+		self.central_widget.trainToInterm = self.trainToInterm
+		self.central_widget.intermToTrain = self.intermToTrain
+
 		self.central_widget.settingsToTest = self.settingsToTest
+		self.central_widget.testToTest = self.testToTest
+		self.central_widget.testToConclusion = self.testToConclusion
 
 		self.menu_widget.trainModeBtn.clicked.connect(partial(self.menuToSettings, test=False))
 		self.menu_widget.testModeBtn.clicked.connect(partial(self.menuToSettings, test=True))
@@ -39,7 +44,6 @@ class MainWindow(QMainWindow):
 		self.setGeometry(0, 0, 640, 540)
 
 	def menuToSettings(self, test):
-
 		settings_widget = SettingsWidget(test=test, parent=self)
 		self.central_widget.addWidget(settings_widget)
 		self.central_widget.setCurrentWidget(settings_widget)
@@ -50,12 +54,12 @@ class MainWindow(QMainWindow):
 		self.score = 0
 		stage = utils.Stage(self.central_widget.stageGenerator)
 		game_widget = GameWidget(stage=stage, test=False, parent=self)
+
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
 
 	def settingsToTest(self):
 		self.helpShortcut.activated.connect(self.nothing)
-
 
 		self.question = 1
 		self.stages = []
@@ -66,13 +70,6 @@ class MainWindow(QMainWindow):
 		self.central_widget.setCurrentWidget(game_widget)
 
 	def testToTest(self, stage, checkboxes):
-		checked = False
-		for checkbox in checkboxes:
-			if checkbox.isChecked():
-				checked = True
-		if not checked:
-			return
-			
 		self.question += 1
 		self.stages.append([stage, checkboxes])
 		stage = utils.Stage(self.central_widget.stageGenerator)
@@ -81,13 +78,6 @@ class MainWindow(QMainWindow):
 		self.central_widget.setCurrentWidget(game_widget)
 
 	def testToConclusion(self, stage, checkboxes):
-		checked = False
-		for checkbox in checkboxes:
-			if checkbox.isChecked():
-				checked = True
-		if not checked:
-			return
-
 		self.stages.append([stage, checkboxes])
 		conclusion_widget = ConclusionWidget(stages=self.stages, parent=self)
 		self.central_widget.addWidget(conclusion_widget)
@@ -96,16 +86,10 @@ class MainWindow(QMainWindow):
 
 	def trainToInterm(self, stage, checkboxes):
 		valid = False
-		checked = False
 		for checkbox in checkboxes:
-			if checkbox.isChecked():
-				checked = True
-				if checkbox.text() == stage.valid_answer:
-					self.score += 1
-					valid = True
-
-		if not checked:
-			return
+			if checkbox.isChecked() and checkbox.text() == stage.valid_answer:
+				self.score += 1
+				valid = True
 
 		interm_widget = IntermWidget(stage, checkboxes, valid, parent=self)		
 		self.central_widget.addWidget(interm_widget)

@@ -84,7 +84,7 @@ class ConclusionWidget(QtWidgets.QWidget):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.backBtn.sizePolicy().hasHeightForWidth())
         self.backBtn.setSizePolicy(sizePolicy)
-        self.backBtn.setMaximumSize(QtCore.QSize(256, 64))
+        self.backBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.backBtn.setObjectName("backBtn")
         self.verticalLayout.addWidget(self.backBtn)
         self.horizontalLayout.addLayout(self.verticalLayout)

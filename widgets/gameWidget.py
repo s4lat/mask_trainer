@@ -110,14 +110,6 @@ font-size: 24px;
             self.countLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
             self.countLabel.setObjectName("countLabel")
             self.gridLayout.addWidget(self.countLabel, 3, 2, 1, 1)
-            if self.last:
-                self.replyBtn.clicked.connect(partial(self.parent().testToConclusion,
-                                                self.stage, self.checkBoxes))
-            else:
-                self.replyBtn.clicked.connect(partial(self.parent().testToTest,
-                                                self.stage, self.checkBoxes))
-
-
         else:
             self.scoreLabel = QtWidgets.QLabel(Form)
             self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
@@ -127,8 +119,8 @@ font-size: 24px;
             self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
             self.scoreLabel.setObjectName("scoreLabel")
             self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
-            self.replyBtn.clicked.connect(partial(self.parent().trainToInterm,
-                                                self.stage, self.checkBoxes))
+
+        self.replyBtn.clicked.connect(self.reply)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -156,5 +148,23 @@ font-size: 24px;
         self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
         #########################My changes
 
+
+    def reply(self):
+        checked = False
+
+        for checkbox in self.checkBoxes:
+            if checkbox.isChecked():
+                checked = True
+
+        if not checked:
+            return
+
+        if self.test:
+            if self.last:
+                self.parent().testToConclusion(self.stage, self.checkBoxes)
+            else:
+                self.parent().testToTest(self.stage, self.checkBoxes)
+        else:
+            self.parent().trainToInterm(self.stage, self.checkBoxes)
 
 
