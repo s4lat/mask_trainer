@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from functools import partial
 
 class AboutDialog(QtWidgets.QDialog):
     def __init__(self, parent = None):
@@ -23,6 +23,8 @@ class AboutDialog(QtWidgets.QDialog):
 
         self.label = QtWidgets.QLabel()
         self.label.setObjectName("label")
+        self.label.linkActivated.connect(partial(QtGui.QDesktopServices.openUrl, 
+                            QtCore.QUrl("https://github.com/s4lat/mask_trainer/releases")))
         self.verticalLayout_2.addWidget(self.label)
 
         self.gridLayout_3 = QtWidgets.QGridLayout()
@@ -54,7 +56,7 @@ class AboutDialog(QtWidgets.QDialog):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">MaskTrainer v1.0</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Тренажер сопоставления маски и имени файла</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Распространяется бесплатно</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Email: zakazchikm@gmail.com</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Автор программы: Заказчик М.Н</span></p><p align=\"center\"><a href=\"https://github.com/s4lat/mask_trainer\"><span style=\"font-size:18pt; text-decoration: underline; color:#0000ff;\">Репозиторий</span></a></p><p align=\"right\"><span style=\" font-family:\'AppleSDGothicNeo-Regular,lucida grande,tahoma,verdana,arial,sans-serif,AppleColorEmoji,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,NotoColorEmoji,EmojiSymbols,Symbola,Noto,Android Emoji,AndroidEmoji,Arial Unicode MS,Zapf Dingbats\'; font-size:12px; color:#000000;\">Copyright © 2019 Заказчик М.Н.</span></p></body></html>"))
+        self.label.setText(_translate("Dialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">MaskTrainer v1.0</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Тренажер сопоставления маски и имени файла</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Распространяется бесплатно</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Email: zakazchikm@gmail.com</span></p><p align=\"center\"><span style=\" font-size:18pt;\">Автор программы: Заказчик М.Н</span></p><p align=\"center\"><a href=\"https://github.com/s4lat/mask_trainer/releases\"><span style=\"font-size:18pt; text-decoration: underline; color:#0000ff;\">Список версии</span></a></p><p align=\"right\"><span style=\" font-family:\'AppleSDGothicNeo-Regular,lucida grande,tahoma,verdana,arial,sans-serif,AppleColorEmoji,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,NotoColorEmoji,EmojiSymbols,Symbola,Noto,Android Emoji,AndroidEmoji,Arial Unicode MS,Zapf Dingbats\'; font-size:12px; color:#000000;\">Copyright © 2019 Заказчик М.Н.</span></p></body></html>"))
         
         self.okBtn.setText(_translate("Dialog", "Ок"))
         

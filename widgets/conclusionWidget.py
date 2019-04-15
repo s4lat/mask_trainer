@@ -21,6 +21,13 @@ class ConclusionWidget(QtWidgets.QWidget):
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
+        Form.setStyleSheet("""
+#scrollAreaWidgetContents{
+    background-color: rgb(230, 230, 230);
+    border-style: outset;
+    border-color: rgb(51, 51, 51);
+    border-width: 1px;
+}""")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -83,6 +90,7 @@ class ConclusionWidget(QtWidgets.QWidget):
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.backBtn.sizePolicy().hasHeightForWidth())
+        self.backBtn.setMinimumSize(QtCore.QSize(0, 48))
         self.backBtn.setSizePolicy(sizePolicy)
         self.backBtn.setMaximumSize(QtCore.QSize(250, 75))
         self.backBtn.setObjectName("backBtn")

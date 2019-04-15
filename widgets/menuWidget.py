@@ -63,6 +63,8 @@ font-size: 18px;
         self.vbox.addWidget(self.helpBtn)
         self.aboutBtn = QtWidgets.QPushButton(Form)
         self.aboutBtn.setMaximumSize(QtCore.QSize(250, 75))
+        self.aboutBtn.setIconSize(QtCore.QSize(24, 24))
+        self.aboutBtn.setIcon(QtGui.QIcon("assets/info.png"))
         self.aboutBtn.setObjectName("aboutBtn")
         self.vbox.addWidget(self.aboutBtn)
         self.exitBtn = QtWidgets.QPushButton(Form)

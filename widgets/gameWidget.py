@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'widgets/TrainWidget.ui'
+# Form implementation generated from reading ui file 'widgets/newGameWidget.ui'
 #
 # Created by: PyQt5 UI code generator 5.12.1
 #
@@ -17,154 +17,144 @@ class GameWidget(QtWidgets.QWidget):
         self.stage = stage
         self.setupUi(self)
 
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        Form.move(self.parent().rect().center())
         Form.setStyleSheet("""
-QWidget{
-font-size: 18px;
+QRadioButton{
+    font-size: 16px;
 }
-QLabel{
-border-width: 1px;
-border-radius: 10px;
-border-style: outset;
-border-color: rgb(51, 51, 51);
-}
-QLabel#scoreLabel{
-border-radius: 3px;
-}
-QLabel#countLabel{
-border-radius: 3px;
-}
-QLabel#maskLabel{
-border-radius: 3px;
-font-size: 24px;
+#topLabel, #maskLabel, #scoreLabel, #optBox{
+    background-color: rgb(230, 230, 230);
+    border-style: outset;
+    border-color: rgb(51, 51, 51);
+    border-width: 1px;
 }""")
-
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(-1, -1, -1, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(Form)
-        self.label.setMaximumSize(QtCore.QSize(16777215, 64))
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.horizontalLayout.addWidget(self.label)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 3)
-        self.maskLabel = QtWidgets.QLabel(Form)
-        self.maskLabel.setMaximumSize(QtCore.QSize(512, 32))
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.backBtn = QtWidgets.QPushButton(Form)
+        self.backBtn.setMinimumSize(QtCore.QSize(64, 64))
+        self.backBtn.setMaximumSize(QtCore.QSize(64, 64))
+        self.backBtn.setIconSize(QtCore.QSize(44, 44))
+        self.backBtn.setIcon(QtGui.QIcon("assets/backBtn.png"))
+        self.backBtn.setObjectName("backBtn")
+
+
+        self.horizontalLayout_4.addWidget(self.backBtn)
+        self.topLabel = QtWidgets.QLabel(Form)
+        self.topLabel.setMinimumSize(QtCore.QSize(400, 64))
+        self.topLabel.setMaximumSize(QtCore.QSize(16777215, 64))
         font = QtGui.QFont()
         font.setPointSize(18)
-        self.maskLabel.setFont(font)
-        self.maskLabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.maskLabel.setScaledContents(False)
-        self.maskLabel.setObjectName("maskLabel")
-        self.gridLayout.addWidget(self.maskLabel, 3, 0, 1, 1)
-        self.replyBtn = QtWidgets.QPushButton(Form)
-        self.replyBtn.setMaximumSize(QtCore.QSize(300, 75))
-        self.replyBtn.setObjectName("replyBtn")
-        self.gridLayout.addWidget(self.replyBtn, 13, 2, 1, 1)
-        self.backBtn = QtWidgets.QPushButton(Form)
-        self.backBtn.setMaximumSize(QtCore.QSize(300, 45))
-        self.backBtn.setObjectName("backBtn")
-        self.gridLayout.addWidget(self.backBtn, 13, 0, 1, 1)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.groupBox = QtWidgets.QGroupBox(Form)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout.setContentsMargins(23, 1, -1, 1)
-        self.verticalLayout.setObjectName("verticalLayout")
-
-        #########################My changes
+        self.topLabel.setFont(font)
+        self.topLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.topLabel.setObjectName("topLabel")
+        self.horizontalLayout_4.addWidget(self.topLabel)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout.addStretch(1)
+        self.maskLabel = QtWidgets.QLabel(Form)
+        self.maskLabel.setMinimumSize(QtCore.QSize(256, 32))
+        self.maskLabel.setMaximumSize(QtCore.QSize(16777215, 32))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.checkBoxes = []
+        self.maskLabel.setFont(font)
+        self.maskLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.maskLabel.setObjectName("maskLabel")
+        self.horizontalLayout.addWidget(self.maskLabel)
+        self.horizontalLayout.addStretch(1)
+        self.scoreLabel = QtWidgets.QLabel(Form)
+        self.scoreLabel.setMinimumSize(QtCore.QSize(256, 32))
+        self.scoreLabel.setMaximumSize(QtCore.QSize(16777215, 32))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.scoreLabel.setFont(font)
+        self.scoreLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.scoreLabel.setObjectName("scoreLabel")
+        self.horizontalLayout.addWidget(self.scoreLabel)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.horizontalLayout.addStretch(1)
+        self.maskLabel_3 = QtWidgets.QLabel(Form)
+        self.maskLabel_3.setMaximumSize(QtCore.QSize(16777215, 32))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.maskLabel_3.setFont(font)
+        self.maskLabel_3.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
+        self.maskLabel_3.setObjectName("maskLabel_3")
+        self.verticalLayout.addWidget(self.maskLabel_3)
+
+        self.optBox = QtWidgets.QFrame(Form)
+        self.optBox.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.optBox.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.optBox.setObjectName("optBox")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.optBox)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+
+        self.opts = []
         self.buttonGroup = QtWidgets.QButtonGroup(Form)
+        for i, answ in enumerate(self.stage.answers):
+            opt = QtWidgets.QRadioButton(self.optBox)
+            opt.setObjectName("opt_%s" % i)
+            self.verticalLayout_2.addWidget(opt)
+            self.buttonGroup.addButton(opt)
+            self.opts.append(opt)
 
-        for i, answers in enumerate(self.stage.answers):
-            checkBox = QtWidgets.QRadioButton(self.groupBox)
-            checkBox.setMaximumSize(QtCore.QSize(512, 25))
-            checkBox.setFont(font)
-            checkBox.setStyleSheet("border-width: 0px;")
-            checkBox.setObjectName("checkBox_%s" % i)
-            self.buttonGroup.addButton(checkBox)
-            self.verticalLayout.addWidget(checkBox)
-            self.checkBoxes.append(checkBox)
+        self.verticalLayout.addWidget(self.optBox)
 
-        #########################My changes
-        self.horizontalLayout_2.addWidget(self.groupBox)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 5, 0, 1, 3)
+        self.replyBtn = QtWidgets.QPushButton(Form)
+        self.replyBtn.setMinimumSize(QtCore.QSize(0, 48))
+        font = QtGui.QFont()
+        font.setPointSize(16)
 
-        if self.test:
-            self.countLabel = QtWidgets.QLabel(Form)
-            self.countLabel.setMaximumSize(QtCore.QSize(256, 25))
-            font = QtGui.QFont()
-            font.setPointSize(16)
-            self.countLabel.setFont(font)
-            self.countLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-            self.countLabel.setObjectName("countLabel")
-            self.gridLayout.addWidget(self.countLabel, 3, 2, 1, 1)
-        else:
-            self.scoreLabel = QtWidgets.QLabel(Form)
-            self.scoreLabel.setMaximumSize(QtCore.QSize(256, 25))
-            font = QtGui.QFont()
-            font.setPointSize(16)
-            self.scoreLabel.setFont(font)
-            self.scoreLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-            self.scoreLabel.setObjectName("scoreLabel")
-            self.gridLayout.addWidget(self.scoreLabel, 3, 2, 1, 1)
+        self.replyBtn.setFont(font)
+        self.replyBtn.setObjectName("replyBtn")
+        self.verticalLayout.addWidget(self.replyBtn)
+        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
 
+        self.backBtn.clicked.connect(self.parent().backToMenu)
         self.replyBtn.clicked.connect(self.reply)
 
-        self.retranslateUi(Form)
+        self.retranslate(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
-        self.backBtn.clicked.connect(self.parent().backToMenu)
-
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        #########################My changes
-        self.label.setText(_translate("Form", "Выберите подходящее под маску имя файла"))
-        
-        self.replyBtn.setText(_translate("Form", "Ответить"))
-        self.backBtn.setText(_translate("Form", "Вернуться в меню"))
-
-        
-        for i, checkBox in enumerate(self.checkBoxes):
-            checkBox.setText(_translate("Form", self.stage.answers[i]))
-
-        if self.test:
-            self.countLabel.setText(_translate("Form", "Вопрос: %s/%s" % (self.parent().question, 
-                                            self.parent().total_questions)))
-        else:
-            self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().score))
-        
-        self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
-        #########################My changes
 
 
     def reply(self):
         checked = False
 
-        for checkbox in self.checkBoxes:
-            if checkbox.isChecked():
+        for opt in self.opts:
+            if opt.isChecked():
                 checked = True
 
         if not checked:
             return
 
-        if self.test:
-            if self.last:
-                self.parent().testToConclusion(self.stage, self.checkBoxes)
-            else:
-                self.parent().testToTest(self.stage, self.checkBoxes)
-        else:
-            self.parent().trainToInterm(self.stage, self.checkBoxes)
+        if self.test and not self.last:
+            return self.parent().nextStage(self.test, stage=self.stage, opts=self.opts)
+        
+        return self.parent().conclusionWidget(self.test, stage=self.stage, opts=self.opts)
 
+    def retranslate(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        self.topLabel.setText(_translate("Form", "Выберите подходящее под маску имя файла"))
+        self.maskLabel.setText(_translate("Form", "Маска: %s" % self.stage.mask))
+
+        if self.test:
+            self.scoreLabel.setText(_translate("Form", "Вопрос: %s/%s" % (self.parent().question, 
+                                        self.parent().total_questions)))
+        else:
+            self.scoreLabel.setText(_translate("Form", "Счет: %s" % self.parent().getScore()))
+
+        self.maskLabel_3.setText(_translate("Form", "Варианты ответа:"))
+        
+        for i, opt in enumerate(self.opts):
+            opt.setText(_translate("Form", self.stage.answers[i]))
+
+        self.replyBtn.setText(_translate("Form", "Ответить"))
 

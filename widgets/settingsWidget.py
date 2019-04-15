@@ -240,10 +240,7 @@ font-size: 24px;
         utils.writeSettings(sets)
         self.parent().stageGenerator = utils.StageGenerator(utils.readSettings())
 
-        if self.test:
-            self.parent().settingsToTest()
-        else:
-            self.parent().settingsToTrain()
+        self.parent().newGame(self.test)
 
 
     def updateValue(self, label, text, slider):

@@ -24,82 +24,66 @@ class MainWindow(QMainWindow):
 		self.central_widget.addWidget(self.menu_widget)
 		self.central_widget.backToMenu = self.backToMenu
 		self.central_widget.stageGenerator = self.stageGenerator
-		self.central_widget.settingsToTrain = self.settingsToTrain
-		self.central_widget.trainToInterm = self.trainToInterm
-		self.central_widget.intermToTrain = self.intermToTrain
+		self.central_widget.newGame = self.newGame
+		self.central_widget.nextStage = self.nextStage
+		self.central_widget.conclusionWidget = self.conclusionWidget
+		self.central_widget.incScore = self.incScore
+		self.central_widget.getScore = self.getScore
 
-		self.central_widget.settingsToTest = self.settingsToTest
-		self.central_widget.testToTest = self.testToTest
-		self.central_widget.testToConclusion = self.testToConclusion
-
-		self.menu_widget.trainModeBtn.clicked.connect(partial(self.menuToSettings, test=False))
-		self.menu_widget.testModeBtn.clicked.connect(partial(self.menuToSettings, test=True))
+		self.menu_widget.trainModeBtn.clicked.connect(partial(self.settingsWidget, test=False))
+		self.menu_widget.testModeBtn.clicked.connect(partial(self.settingsWidget, test=True))
 		self.menu_widget.helpBtn.clicked.connect(self.showHelpDialog)
 		self.menu_widget.aboutBtn.clicked.connect(self.showAboutDialog)
 		self.menu_widget.exitBtn.clicked.connect(self.close)
 		
 		self.helpShortcut = QShortcut(QKeySequence("f1"), self)
 
+		self.setWindowTitle("MaskTrainer")
 		self.setWindowIcon(QIcon("assets/icon.ico"))
 		self.setGeometry(0, 0, 640, 540)
 
-	def menuToSettings(self, test):
+	def settingsWidget(self, test):
 		settings_widget = SettingsWidget(test=test, parent=self)
 		self.central_widget.addWidget(settings_widget)
 		self.central_widget.setCurrentWidget(settings_widget)
 
-	def settingsToTrain(self):
-		self.helpShortcut.activated.connect(self.showHelpDialog)
+	def newGame(self, test):
+		if test:
+			self.helpShortcut.activated.connect(self.nothing)
+			self.question = 1
+			self.stages = []
+			self.total_questions = utils.readSettings()["ANSWERS_COUNT"]
+		else:
+			self.helpShortcut.activated.connect(self.showHelpDialog)
 
-		self.score = 0
+			self.score = 0
+
 		stage = utils.Stage(self.central_widget.stageGenerator)
-		game_widget = GameWidget(stage=stage, test=False, parent=self)
+		game_widget = GameWidget(stage=stage, test=test, parent=self)
 
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
 
-	def settingsToTest(self):
-		self.helpShortcut.activated.connect(self.nothing)
+	def nextStage(self, test, stage=None, opts=None, last=False):
+		if test:
+			self.question += 1
+			self.stages.append([stage, opts])
+			last = (self.question == self.total_questions)
 
-		self.question = 1
-		self.stages = []
-		self.total_questions = utils.readSettings()["ANSWERS_COUNT"]
 		stage = utils.Stage(self.central_widget.stageGenerator)
-		game_widget = GameWidget(stage=stage, test=True, parent=self)
+		game_widget = GameWidget(stage=stage, test=test, last=last, parent=self)
 		self.central_widget.addWidget(game_widget)
 		self.central_widget.setCurrentWidget(game_widget)
 
-	def testToTest(self, stage, checkboxes):
-		self.question += 1
-		self.stages.append([stage, checkboxes])
-		stage = utils.Stage(self.central_widget.stageGenerator)
-		game_widget = GameWidget(stage=stage, test=True, last=(self.question==self.total_questions), parent=self)
-		self.central_widget.addWidget(game_widget)
-		self.central_widget.setCurrentWidget(game_widget)
+	def conclusionWidget(self, test, stage, opts):
+		if test:
+			self.stages.append([stage, opts])
+			conclusion_widget = ConclusionWidget(stages=self.stages, parent=self)
+		else:
+			conclusion_widget = IntermWidget(stage=stage, opts=opts, parent=self)
 
-	def testToConclusion(self, stage, checkboxes):
-		self.stages.append([stage, checkboxes])
-		conclusion_widget = ConclusionWidget(stages=self.stages, parent=self)
 		self.central_widget.addWidget(conclusion_widget)
 		self.central_widget.setCurrentWidget(conclusion_widget)
-
-
-	def trainToInterm(self, stage, checkboxes):
-		valid = False
-		for checkbox in checkboxes:
-			if checkbox.isChecked() and checkbox.text() == stage.valid_answer:
-				self.score += 1
-				valid = True
-
-		interm_widget = IntermWidget(stage, checkboxes, valid, parent=self)		
-		self.central_widget.addWidget(interm_widget)
-		self.central_widget.setCurrentWidget(interm_widget)
-
-	def intermToTrain(self):
-		stage = utils.Stage(self.central_widget.stageGenerator)
-		game_widget = GameWidget(stage=stage, test=False, parent=self)
-		self.central_widget.addWidget(game_widget)
-		self.central_widget.setCurrentWidget(game_widget)
 
 	def showHelpDialog(self):
 		helpDialog = HelpDialog(self)
@@ -112,9 +96,12 @@ class MainWindow(QMainWindow):
 	def backToMenu(self):
 		self.central_widget.setCurrentWidget(self.menu_widget)
 
-	def changeResizeEvent(self, event):
-		self.resizeEvent = event
+	def incScore(self):
+		self.score += 1
 
+	def getScore(self):
+		return self.score
+		
 	def nothing(self):
 		pass
 
