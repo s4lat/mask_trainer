@@ -30,7 +30,7 @@ class IntermWidget(QtWidgets.QWidget):
         Form.setObjectName("Form")
         Form.setStyleSheet("""
 QRadioButton{
-    font-size: 16px;
+    font-size: 18px;
     color: rgb(206, 0, 0);
 }
 QRadioButton#valid{
