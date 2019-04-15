@@ -29,7 +29,7 @@ class ConclusionWidget(QtWidgets.QWidget):
     border-width: 1px;
 }
 #backBtn{
-    font-size: 16px;
+    font-size: 18px;
 }""")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
