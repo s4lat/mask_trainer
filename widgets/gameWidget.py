@@ -22,7 +22,7 @@ class GameWidget(QtWidgets.QWidget):
         Form.setObjectName("Form")
         Form.setStyleSheet("""
 QRadioButton{
-    font-size: 16px;
+    font-size: 18px;
 }
 #topLabel, #maskLabel, #scoreLabel, #optBox{
     background-color: rgb(230, 230, 230);
