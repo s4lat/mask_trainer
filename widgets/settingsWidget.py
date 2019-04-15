@@ -235,7 +235,8 @@ font-size: 24px;
                 "MAX_EXT_LEN" : self.extSlider.value(),
                 "MAX_STAR_LEN" : self.starSlider.value(),
                 "ANSWER_OPTS" : self.optSlider.value(),
-                "ANSWERS_COUNT" : self.answersSlider.value() if self.test else 10}
+                "ANSWERS_COUNT" : self.answersSlider.value() if self.test 
+                                            else self.settings["ANSWERS_COUNT"]}
 
         utils.writeSettings(sets)
         self.parent().stageGenerator = utils.StageGenerator(utils.readSettings())
