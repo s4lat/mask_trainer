@@ -27,6 +27,9 @@ class ConclusionWidget(QtWidgets.QWidget):
     border-style: outset;
     border-color: rgb(51, 51, 51);
     border-width: 1px;
+}
+#backBtn{
+    font-size: 16px;
 }""")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
