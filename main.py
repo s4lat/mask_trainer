@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
 
 		self.setWindowTitle("MaskTrainer")
 		self.setWindowIcon(QIcon("assets/icon.ico"))
-		self.setGeometry(0, 0, 640, 640)
+		self.setGeometry(200, 200, 640, 640)
 
 	def settingsWidget(self, test):
 		settings_widget = SettingsWidget(test=test, parent=self)
