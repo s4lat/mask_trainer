@@ -1,5 +1,5 @@
 x86
-python -m PyInstaller -D -w --add-data assets;assets --add-data plugins32;PyQt5\plugins --icon=assets\icon.ico run.py
+python -m PyInstaller -D -w --add-data assets;assets --add-data plugins32;PyQt5\Qt\plugins --icon=assets\icon.ico run.py
 
 x64
 python -m PyInstaller -D -w --add-data assets;assets --icon=assets\icon.ico run.py
