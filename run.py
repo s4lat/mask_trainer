@@ -1,6 +1,6 @@
 from main import MainWindow
 from PyQt5.QtWidgets import QApplication
-import sys
+import sys, os
 
 if __name__ == '__main__':
 	pyqt = os.path.dirname(PyQt5.__file__)
