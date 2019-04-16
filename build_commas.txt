@@ -1,0 +1,5 @@
+x86
+python -m PyInstaller -D -w --add-data assets;assets plugins32;plugins --icon=assets\icon.ico run.py
+
+x64
+python -m PyInstaller -D -w --add-data assets;assets plugins64;plugins --icon=assets\icon.ico run.py
