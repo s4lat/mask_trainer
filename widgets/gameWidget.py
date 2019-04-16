@@ -47,7 +47,7 @@ QRadioButton{
 
         self.horizontalLayout_4.addWidget(self.backBtn)
         self.topLabel = QtWidgets.QLabel(Form)
-        self.topLabel.setMinimumSize(QtCore.QSize(400, 64))
+        self.topLabel.setMinimumSize(QtCore.QSize(500, 64))
         self.topLabel.setMaximumSize(QtCore.QSize(16777215, 64))
         font = QtGui.QFont()
         font.setPointSize(18)
