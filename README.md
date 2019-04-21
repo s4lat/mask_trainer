@@ -2,11 +2,7 @@
 
 ## Десктопная версия mask_trainer [RUS]
 
-1. Версия для Windows: 
-    - Инсталлер: https://github.com/s4lat/mask_trainer/releases/download/v1.0/MaskTrainerWindows_v1.0_setup.exe
-    - Portable версия (достаточно распакавать в любую папку): https://github.com/s4lat/mask_trainer/releases/download/v1.0/MaskTrainerWindows_V1.0_portable.rar
-2. Версия для Mac: Coming soon...
-3. Версия для Linux: Coming soon...
+Релиз MaskTrainer v1.1: https://github.com/s4lat/mask_trainer/releases/tag/v1.1
 
 
 
